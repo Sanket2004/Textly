@@ -7,6 +7,7 @@ import RoomPage from "./pages/RoomPage";
 import Navbar from "./components/Navbar";
 import { initNotificationSound } from "./utils/initNotification";
 import { useEffect } from "react";
+import NotFound from "./pages/not-found";
 
 export default function App() {
   const { username } = useAppStore();
@@ -37,6 +38,7 @@ export default function App() {
             }
           />
           <Route path="/onboarding" element={username ? <Navigate to="/" /> : <UsernamePage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

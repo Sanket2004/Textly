@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import useAppStore from "../stores/useStore"
 import {
   GoLock,
@@ -38,6 +38,7 @@ export default function RoomPage() {
   const [showUsersList, setShowUsersList] = useState(false)
   const messagesEndRef = useRef(null)
   const inputRef = useRef(null)
+  const navigate = useNavigate();
 
   const [passwordInput, setPasswordInput] = useState("")
   const [passwordPrompt, setPasswordPrompt] = useState(false)
@@ -175,7 +176,7 @@ export default function RoomPage() {
               onClick={() => {
                 setPasswordPrompt(false)
                 setJoinAttempted(false)
-                history.back()
+                navigate(-1)
               }}
               className="px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-50"
             >
@@ -192,7 +193,7 @@ export default function RoomPage() {
       <div className="h-[calc(100vh-125px)] flex items-center justify-center bg-gray-50">
         <div className="flex flex-col items-center gap-3">
           <p className="text-gray-500 text-lg">Room not found or access denied</p>
-          <button onClick={() => history.back()} className="px-4 py-2 bg-sky-500 text-white rounded-xl hover:bg-sky-600">
+          <button onClick={() => navigate(-1)} className="px-4 py-2 bg-sky-500 text-white rounded-xl hover:bg-sky-600">
             Go Back
           </button>
         </div>
@@ -209,7 +210,7 @@ export default function RoomPage() {
           <div className="bg-white border-b border-gray-200 px-6 py-4 flex-shrink-0">
             <div className="flex items-center gap-4">
               <button
-                onClick={() => history.back()}
+                onClick={() => navigate(-1)}
                 className="p-2 hover:bg-gray-100 rounded-xl transition-colors md:hidden"
               >
                 <GoArrowLeft size={20} className="text-gray-600" />
@@ -220,8 +221,8 @@ export default function RoomPage() {
                   <h1 className="text-xl font-semibold text-gray-900 truncate">{room.name}</h1>
                   <div
                     className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${room.isPrivate
-                        ? "bg-amber-50 text-amber-700 border border-amber-200"
-                        : "bg-green-50 text-green-700 border border-green-200"
+                      ? "bg-amber-50 text-amber-700 border border-amber-200"
+                      : "bg-green-50 text-green-700 border border-green-200"
                       }`}
                   >
                     {room.isPrivate ? <GoLock size={12} /> : <GoGlobe size={12} />}
@@ -284,8 +285,8 @@ export default function RoomPage() {
 
                     <div
                       className={`px-4 py-1 rounded-2xl ${isMyMessage
-                          ? "bg-sky-500 text-white rounded-tr-md"
-                          : "bg-white text-gray-500 rounded-tl-md border border-gray-200"
+                        ? "bg-sky-500 text-white rounded-tr-md"
+                        : "bg-white text-gray-500 rounded-tl-md border border-gray-200"
                         }`}
                     >
                       <p className="leading-relaxed whitespace-pre-wrap break-all">{msg.content}</p>
@@ -321,8 +322,8 @@ export default function RoomPage() {
                 onClick={handleSend}
                 disabled={!content.trim()}
                 className={`h-10 w-10 flex items-center justify-center rounded-full transition-all ${content.trim()
-                    ? "bg-sky-500 hover:bg-sky-600 text-white"
-                    : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  ? "bg-sky-500 hover:bg-sky-600 text-white"
+                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
                   }`}
               >
                 <GoArrowUpRight size={22} />
