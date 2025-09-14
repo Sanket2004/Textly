@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Geist", sans-serif;
+}
+
+@layer base {
+    html {
+        @apply scroll-smooth font-sans
+    }
+}
+
+
+.Toastify__toast {
+    @apply font-sans
+}
