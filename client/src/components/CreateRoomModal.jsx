@@ -44,6 +44,7 @@ export default function CreateRoomModal({ isOpen, onClose }) {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             className="w-full border rounded-xl px-3 py-2 mt-1"
+                            placeholder="Enter a room name"
                             required
                         />
                     </div>
@@ -54,6 +55,7 @@ export default function CreateRoomModal({ isOpen, onClose }) {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             className="w-full border rounded-xl px-3 py-2 mt-1"
+                            placeholder="Enter a description ( optional )"
                         />
                     </div>
 

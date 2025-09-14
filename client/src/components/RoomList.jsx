@@ -57,7 +57,7 @@ export default function RoomList() {
             <div className='p-2 max-w-md mx-auto mb-8'>
                 <input
                     type='text'
-                    placeholder='Search rooms...'
+                    placeholder='Search rooms'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className='w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black'

@@ -208,7 +208,7 @@ export default function RoomPage() {
         <div className="flex flex-col flex-1">
           {/* Header */}
           <div className="bg-white border-b border-gray-200 px-6 py-4 flex-shrink-0">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 flex-wrap">
               <button
                 onClick={() => navigate(-1)}
                 className="p-2 hover:bg-gray-100 rounded-xl transition-colors md:hidden"
@@ -230,8 +230,8 @@ export default function RoomPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-gray-500 flex-wrap">
-                  {room.description && <span className="truncate">{room.description}</span>}
+                <div className="flex items-center gap-4 text-sm text-gray-500 flex-wrap break-all">
+                  {room.description && <span>{room.description}</span>}
                   <div className="flex items-center gap-1 flex-shrink-0">
                     <GoPerson size={14} />
                     <span>@{room.owner || "Anonymous"}</span>
